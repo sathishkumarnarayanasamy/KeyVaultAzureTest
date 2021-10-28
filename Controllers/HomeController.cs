@@ -38,7 +38,7 @@ namespace KeyVaultMsiWebAppCore.Controllers
             {
                 var kvUri = "https://" + keyVaultName + ".vault.azure.net";
     
-                var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+                var client = new SecretClient(new Uri(kvUri), new ManagedIdentityCredential(clientId: "30c09c9f-66ff-4e54-a321-3c85b7071764"));
 
                 KeyVaultSecret secret = client.GetSecret(secretName);
                 secretValue = secret.Value;
